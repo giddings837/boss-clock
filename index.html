@@ -23,7 +23,7 @@
         <div class="topbar-right">
           <div class="live-dot"><span></span> Live board</div>
           <button class="language-toggle" id="languageToggle" type="button">ES / EN</button>
-          <button class="admin-link" id="adminToggle" type="button">Admin view <span>↗</span></button>
+          <a class="admin-link" href="admin.html">Admin view <span>↗</span></a>
         </div>
       </header>
 
@@ -70,15 +70,7 @@
           </div>
         </section>
 
-        <section class="admin-panel" id="adminPanel" hidden>
-          <div class="panel-heading">
-            <div><p class="eyebrow gold" data-es="Panel del supervisor" data-en="Supervisor dashboard">Panel del supervisor</p><h3 data-es="Resumen de hoy" data-en="Today at a glance">Resumen de hoy</h3></div>
-            <button class="close-admin" id="adminClose" type="button">Cerrar ×</button>
-          </div>
-          <div class="admin-metrics"><div><span>Clocked in</span><strong id="adminIn">4</strong></div><div><span>Not started</span><strong id="adminOut">6</strong></div><div><span>Total hours</span><strong id="adminHours">31h 20m</strong></div></div>
-          <div class="table-wrap"><table><thead><tr><th>Employee</th><th>Status</th><th>Clocked in</th><th>Hours today</th></tr></thead><tbody id="adminTable"></tbody></table></div>
-          <p class="ghost-note" data-es="El acceso de administrador está en prueba. Cualquiera puede abrir esta vista mientras el equipo prueba el sistema." data-en="Admin access is in preview. Anyone can open this view while the team tests the flow.">El acceso de administrador está en prueba. Cualquiera puede abrir esta vista mientras el equipo prueba el sistema.</p>
-        </section>
+
       </main>
       <footer><span>Built for the crew.</span><span>Garcia &amp; Son Concrete · Boss Clock v0.1</span></footer>
     </div>

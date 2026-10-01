@@ -1,6 +1,6 @@
 services:
   - type: static_site
     name: boss-clock
-    buildCommand: "mkdir -p public && cp index.html styles.css app.js public/"
+    buildCommand: "mkdir -p public && cp index.html admin.html styles.css app.js admin.js public/"
     staticPublishPath: ./public
     pullRequestPreviewsEnabled: false

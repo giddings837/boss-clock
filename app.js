@@ -12,7 +12,6 @@ let language = 'es';
 const grid = document.querySelector('#employeeGrid');
 const clockButton = document.querySelector('#clockButton');
 const actionHint = document.querySelector('#actionHint');
-const adminPanel = document.querySelector('#adminPanel');
 
 function formatHours(value) {
   const hours = Math.floor(value);
@@ -43,18 +42,10 @@ function updateTotals() {
   const total = employees.reduce((sum, employee) => sum + employee.hours, 0);
   document.querySelector('#crewCount').textContent = active;
   document.querySelector('#crewTotal').textContent = formatHours(total);
-  document.querySelector('#adminIn').textContent = active;
-  document.querySelector('#adminOut').textContent = employees.length - active;
-  document.querySelector('#adminHours').textContent = formatHours(total);
   if (selectedId) {
     const selected = employees.find(employee => employee.id === selectedId);
     document.querySelector('#shiftTotal').textContent = formatHours(selected.hours);
   }
-}
-
-function renderAdmin() {
-  document.querySelector('#adminTable').innerHTML = employees.map(employee => `
-    <tr><td><strong>${employee.name}</strong></td><td><span class="status-pill ${employee.clockedIn ? 'in' : 'out'}">${employee.clockedIn ? 'Clocked in' : 'Not started'}</span></td><td>${employee.start}</td><td>${formatHours(employee.hours)}</td></tr>`).join('');
 }
 
 clockButton.addEventListener('click', () => {
@@ -70,21 +61,12 @@ clockButton.addEventListener('click', () => {
     actionHint.textContent = language === 'es' ? `${employee.name} marcó salida por ahora.` : `${employee.name} is clocked out for now.`;
   }
   renderEmployees();
-  renderAdmin();
   updateTotals();
 });
-
-document.querySelector('#adminToggle').addEventListener('click', () => {
-  adminPanel.hidden = false;
-  renderAdmin();
-  adminPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-document.querySelector('#adminClose').addEventListener('click', () => { adminPanel.hidden = true; });
 
 document.querySelector('#languageToggle').addEventListener('click', () => {
   language = language === 'es' ? 'en' : 'es';
   document.querySelectorAll('[data-es][data-en]').forEach(element => { element.textContent = element.dataset[language]; });
-  document.querySelector('#adminToggle').firstChild.textContent = language === 'es' ? 'Vista admin ' : 'Admin view ';
   document.querySelector('.live-dot').lastChild.textContent = language === 'es' ? ' Tablero en vivo' : ' Live board';
   document.querySelector('#actionHint').textContent = language === 'es' ? 'Selecciona tu nombre para marcar entrada o salida.' : 'Select your name to clock in or out.';
   if (selectedId) selectEmployee(selectedId);
@@ -94,5 +76,4 @@ document.querySelector('#languageToggle').addEventListener('click', () => {
 document.querySelector('#todayLabel').textContent = new Date().toLocaleDateString('es-US', { weekday: 'long', month: 'long', day: 'numeric' });
 setInterval(() => { document.querySelector('#currentTime').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }, 1000);
 renderEmployees();
-renderAdmin();
 updateTotals();
