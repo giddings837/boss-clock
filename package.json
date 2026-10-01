@@ -1,0 +1,9 @@
+{
+  "name": "boss-clock",
+  "version": "1.0.0",
+  "scripts": {
+    "check": "node --check app.js && test -s index.html && test -s styles.css"
+  },
+  "private": true,
+  "description": "A simple time clock mockup for Garcia & Son Concrete"
+}

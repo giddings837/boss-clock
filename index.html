@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4c33b" />
+    <title>Boss Clock | Garcia &amp; Son Concrete</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="hazard-mark"><span>G&amp;S</span></div>
+          <div>
+            <p class="eyebrow">Garcia &amp; Son Concrete</p>
+            <h1>Boss Clock</h1>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="live-dot"><span></span> Live board</div>
+          <button class="language-toggle" id="languageToggle" type="button">ES / EN</button>
+          <button class="admin-link" id="adminToggle" type="button">Admin view <span>↗</span></button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow gold"><span data-es="Hoy" data-en="Today">Hoy</span> · <span id="todayLabel">miércoles, 30 de septiembre</span></p>
+            <h2><span data-es="Marca tu tiempo." data-en="Put in the time.">Marca tu tiempo.</span><br /><em data-es="Gana el día." data-en="Own the day.">Gana el día.</em></h2>
+            <p class="hero-note" data-es="Control de horas rápido y claro para la cuadrilla y la oficina." data-en="Fast, clean timekeeping for the crew in the field and the boss in the office.">Control de horas rápido y claro para la cuadrilla y la oficina.</p>
+          </div>
+          <div class="crew-stat">
+            <span class="stat-number" id="crewCount">4</span>
+            <span class="stat-label">on the clock<br />right now</span>
+          </div>
+        </section>
+
+        <section class="clock-card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow" data-es="Reloj de la cuadrilla" data-en="Crew time clock">Reloj de la cuadrilla</p>
+              <h3 data-es="¿Quién eres?" data-en="Who are you?">¿Quién eres?</h3>
+            </div>
+            <div class="current-time" id="currentTime">09:41 AM</div>
+          </div>
+          <div class="employee-grid" id="employeeGrid" aria-label="Employee list"></div>
+          <div class="action-row">
+            <p id="actionHint">Selecciona tu nombre para marcar entrada o salida.</p>
+            <button class="primary-button" id="clockButton" type="button" disabled>Marcar entrada <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="summary-row">
+          <div class="summary-card yellow-accent">
+            <div class="summary-icon">◷</div>
+            <div><p class="eyebrow" data-es="Tu turno" data-en="Your shift">Tu turno</p><strong id="shiftTotal">0h 00m</strong><span data-es="hoy hasta ahora" data-en="today so far">hoy hasta ahora</span></div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon check">✓</div>
+            <div><p class="eyebrow" data-es="Total de la cuadrilla" data-en="Crew total">Total de la cuadrilla</p><strong id="crewTotal">31h 20m</strong><span data-es="registrado hoy" data-en="logged today">registrado hoy</span></div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">▤</div>
+            <div><p class="eyebrow" data-es="Esta semana" data-en="Week to date">Esta semana</p><strong>184h 45m</strong><span data-es="entre 10 empleados" data-en="across 10 employees">entre 10 empleados</span></div>
+          </div>
+        </section>
+
+        <section class="admin-panel" id="adminPanel" hidden>
+          <div class="panel-heading">
+            <div><p class="eyebrow gold" data-es="Panel del supervisor" data-en="Supervisor dashboard">Panel del supervisor</p><h3 data-es="Resumen de hoy" data-en="Today at a glance">Resumen de hoy</h3></div>
+            <button class="close-admin" id="adminClose" type="button">Cerrar ×</button>
+          </div>
+          <div class="admin-metrics"><div><span>Clocked in</span><strong id="adminIn">4</strong></div><div><span>Not started</span><strong id="adminOut">6</strong></div><div><span>Total hours</span><strong id="adminHours">31h 20m</strong></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Employee</th><th>Status</th><th>Clocked in</th><th>Hours today</th></tr></thead><tbody id="adminTable"></tbody></table></div>
+          <p class="ghost-note" data-es="El acceso de administrador está en prueba. Cualquiera puede abrir esta vista mientras el equipo prueba el sistema." data-en="Admin access is in preview. Anyone can open this view while the team tests the flow.">El acceso de administrador está en prueba. Cualquiera puede abrir esta vista mientras el equipo prueba el sistema.</p>
+        </section>
+      </main>
+      <footer><span>Built for the crew.</span><span>Garcia &amp; Son Concrete · Boss Clock v0.1</span></footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
